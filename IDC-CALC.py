@@ -11,6 +11,11 @@ import os
 
 #Criar variaveis e funções
 
+prodt = 0
+pcdef = 0
+pcboas = 0
+porcent = 0
+
 #Funções para facilitar personalização
 def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -38,27 +43,55 @@ def menu():
     escolha = input("Esolha; ")
     return escolha
 
+def reg_prod():
+    limpar()
+    idc()
+    print("Registrar Produção")
+    pontos()
+
+    print("Diga a produção total do dia: ")
+    prodt = int(input("Digite a produção total (Sem considerar os defeitos): "))
+    pcdef = int(input("Digite a quantidade de defeitos: "))
+    pcboas = prodt - pcdef
+    porcent = (pcdef/prodt)*100
+
+    
+
+    return prodt,pcdef,pcboas,porcent
+
+def resumo():
+    limpar()
+    idc()
+    print ("---Resumo da produção---")
+    pontos()
+    print ("A produção real foi de ", pcboas, " Peças")
+    print ("O numero de retrabalhos foi de ", pcdef, " peças")
+    print ("A produção teve ", porcent, " % " "da produção como retrabalho")
+
+
+
 while True:
     limpar()
     escolha = menu()
     if (escolha == "1"):
 
-        pontos()
-        print ("Opção em criação")
-        input("Clique enter para retornar")
-
+        prodt,pcdef,pcboas,porcent = reg_prod()
+        input ("Digite enter para voltar: ")
+        
     elif(escolha == "2"):
 
-        pontos()
-        print ("Opção em criação")
-        input("Clique enter para retornar")
+        print ("Opção em desenvolvimento")
+        input ("Digite enter para voltar: ")
 
     elif(escolha == "3"):
 
-        pontos()
-        print ("Opção em criação")
-        input("Clique enter para retornar")
+        resumo()
+        input ("Digite enter para voltar: ")
 
     elif (escolha == "4"):
         print("Encerrado!")
         break
+
+    else :
+        print ("Opção invalida, escolha uma opção valida")
+        input ("Clique enter para voltar: ")

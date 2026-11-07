@@ -19,8 +19,16 @@ def registrarProd(lista):
                 return
             else:
                 return
+
+    while True:
+        p = input("Digite a produção da hora: ")
+        if p.isdigit():
+            if int(p) > 0:
+                break
+        
+        print("Valor invalido")
             
-    prod = int(input("Digite a produção da hora: "))
+    prod = int(p)
     lista.append([hora,prod])
     lista.sort()
     return lista

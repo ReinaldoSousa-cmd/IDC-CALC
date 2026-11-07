@@ -15,15 +15,22 @@ def registrarProd(lista):
             print("(1) - Sim\n(2) - Não")
             e = int(input("Escolha: "))
             if e == 1:
-                h[1] = int(input("Digite a produção da hora: "))
+                while True:
+                    pn = input("Digite a produção da hora: ")
+                    if pn.isdigit():
+                        if int(pn) >= 0:
+                            break
+                    print("Valor invalido!")
+                h[1] = int(pn)
                 return
+                
             else:
                 return
 
     while True:
         p = input("Digite a produção da hora: ")
         if p.isdigit():
-            if int(p) > 0:
+            if int(p) >= 0:
                 break
         
         print("Valor invalido")

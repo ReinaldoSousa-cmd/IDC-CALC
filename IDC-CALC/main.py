@@ -7,8 +7,17 @@ def limpar():
 
 def registrarProd(lista):
     print("Registrar produção")
+    hora = input("Digite a hora: ")
+    i = 0
+    for h in lstProd:
+        if lstProd[0][0] == hora:
+            print("Hora ja registrada!")
+            input("Digite enter para voltar")
+            return
+        i = i+1
     prod = int(input("Digite a produção da hora: "))
-    lista.append(prod)
+    lista.append([hora,prod])
+    lista.sort()
     return lista
 
 def registrarTempo():
@@ -18,7 +27,7 @@ def registrarTempo():
 def resumo():
     c = 0
     for i in lstProd:
-        print("A produção da hora {} foi {}".format(1+c,lstProd[c]))
+        print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
         c = c + 1
     input("Clique enter para voltar: ")
 

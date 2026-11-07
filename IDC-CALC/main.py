@@ -8,13 +8,12 @@ def limpar():
 def registrarProd(lista):
     print("Registrar produção")
     hora = input("Digite a hora: ")
-    i = 0
     for h in lstProd:
-        if lstProd[0][0] == hora:
+        if h[0] == hora:
             print("Hora ja registrada!")
             input("Digite enter para voltar")
             return
-        i = i+1
+        
     prod = int(input("Digite a produção da hora: "))
     lista.append([hora,prod])
     lista.sort()

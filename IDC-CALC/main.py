@@ -5,6 +5,16 @@ lstProd = []
 def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def validarEsc():
+    while True:
+        esc = input(": ")
+        if esc.isdigit():
+            if int(esc) >= 0:
+                break
+        print("Valor invalido, digite novamente!")
+        input("Clique enter para retornar: ")
+    return int(esc)
+    
 def registrarProd(lista):
     print("Registrar produção")
     hora = input("Digite a hora: ")
@@ -13,27 +23,19 @@ def registrarProd(lista):
             print("Hora ja registrada!")
             print("Deseja atualizar a produção desse horario?")
             print("(1) - Sim\n(2) - Não")
-            e = int(input("Escolha: "))
+            e = validarEsc()
             if e == 1:
-                while True:
-                    pn = input("Digite a produção da hora: ")
-                    if pn.isdigit():
-                        if int(pn) >= 0:
-                            break
-                    print("Valor invalido!")
-                h[1] = int(pn)
+                print("Digite a produção da hora")
+                pn = validarEsc()
+                h[1] = pn
                 return
                 
             else:
                 return
 
-    while True:
-        p = input("Digite a produção da hora: ")
-        if p.isdigit():
-            if int(p) >= 0:
-                break
-        
-        print("Valor invalido")
+    print("Digite a produção da hora: ")
+    p = validarEsc()
+    print("Valor invalido")
             
     prod = int(p)
     lista.append([hora,prod])
@@ -63,21 +65,16 @@ while True:
 (2) - Registrar tempo
 (3) - Ver resumo
 (4) - Sair''')
-    esc = input("Escolha: ")
-    if esc.isdigit():
-        select = int(esc)
-        if select == 1:
+    esc = validarEsc()
+    if esc == 1:
             registrarProd(lstProd)
-        elif select == 2:
+    elif esc == 2:
             registrarTempo()
-        elif select == 3:
+    elif esc == 3:
             resumo()
-        elif select == 4:
+    elif esc == 4:
             print("Programa encerrado")
             break
-        else:
+    else:
             print("Valor invalido")
             input("Clique enter para voltar: ")
-    else:
-        print("Valor invalido")
-        input("Clique enter para voltar: ")

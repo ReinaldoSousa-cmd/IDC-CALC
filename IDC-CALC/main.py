@@ -5,9 +5,9 @@ lstProd = []
 def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def validarEsc():
+def validarNumero(mensagen):
     while True:
-        esc = input(": ")
+        esc = input(mensagen)
         if esc.isdigit():
             if int(esc) >= 0:
                 break
@@ -23,19 +23,15 @@ def registrarProd(lista):
             print("Hora ja registrada!")
             print("Deseja atualizar a produção desse horario?")
             print("(1) - Sim\n(2) - Não")
-            e = validarEsc()
+            e = validarNumero("Escolha: ")
             if e == 1:
-                print("Digite a produção da hora")
-                pn = validarEsc()
+                pn = validarNumero("Digite a produção da hora: ")
                 h[1] = pn
                 return
                 
             else:
                 return
-
-    print("Digite a produção da hora: ")
-    p = validarEsc()
-    print("Valor invalido")
+    p = validarNumero("Digite a produção da hora: ")
             
     prod = int(p)
     lista.append([hora,prod])
@@ -47,11 +43,17 @@ def registrarTempo():
     input("Clique enter para voltar: ")
 
 def resumo():
-    c = 0
-    for i in lstProd:
-        print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
-        c = c + 1
-    input("Clique enter para voltar: ")
+    while True:
+        if not lstProd:
+              print("Nada registrado ainda")
+              input("tecle enter para voltar: ")
+              return
+        c = 0
+        for i in lstProd:
+            print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
+            c = c + 1
+        input("Clique enter para voltar: ")
+        return
 
 #Loop do menu
 
@@ -65,7 +67,7 @@ while True:
 (2) - Registrar tempo
 (3) - Ver resumo
 (4) - Sair''')
-    esc = validarEsc()
+    esc = validarNumero("Escolha: ")
     if esc == 1:
             registrarProd(lstProd)
     elif esc == 2:

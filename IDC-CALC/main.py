@@ -33,7 +33,7 @@ def registrarProd(lista):
                 return
     p = validarNumero("Digite a produção da hora: ")
             
-    prod = int(p)
+    prod = p
     lista.append([hora,prod])
     lista.sort()
     return lista
@@ -43,17 +43,19 @@ def registrarTempo():
     input("Clique enter para voltar: ")
 
 def resumo():
-    while True:
-        if not lstProd:
-              print("Nada registrado ainda")
-              input("tecle enter para voltar: ")
-              return
-        c = 0
-        for i in lstProd:
-            print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
-            c = c + 1
-        input("Clique enter para voltar: ")
-        return
+    if not lstProd:
+          print("Nada registrado ainda")
+          input("tecle enter para voltar: ")
+          return
+    c = 0
+    total = 0
+    for i in lstProd:
+        print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
+        total += lstProd[c][1]
+        c = c + 1
+    print("A produção total foi de : {}".format(total))
+    input("Clique enter para voltar: ")
+    return
 
 #Loop do menu
 

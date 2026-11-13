@@ -15,6 +15,16 @@ def validarNumero(mensagen):
         input("Clique enter para retornar: ")
     return int(esc)
 
+def retornar(mensagem):
+    print(mensagem)
+    input("Clique enter para retornar: ")
+
+def cabe(mensagem):
+    limpar()
+    print("="*len(mensagem))
+    print(mensagem)
+    print("="*len(mensagem))
+
 def validarHora(mensagem):
     while True:
         horario = input(mensagem)
@@ -24,12 +34,11 @@ def validarHora(mensagem):
         if hora >= 0 and hora <= 23:
             if minu >= 0 and minu <= 59:
                 return horario
-        print("Horario invalido")
-        input("Tecle enter para voltar: ")
+        retornar("Horario invalido!")
 
 def registrarProd(lista):
-    print("Registrar produção")
-    hora = validarHora("Digite o horario (HH/MM): ")
+    cabe("Registrar produção")
+    hora = validarHora("Digite o horario (HH:MM): ")
     for h in lista:
         if h[0] == hora:
             print("Hora ja registrada!")
@@ -51,13 +60,12 @@ def registrarProd(lista):
     return lista
 
 def registrarTempo():
-    print("Opção em desenvolvimento")
-    input("Clique enter para voltar: ")
+    retornar("Opção em desenvolvimento")
 
 def resumo():
+    cabe("Resumo")
     if not lstProd:
-          print("Nada registrado ainda")
-          input("tecle enter para voltar: ")
+          retornar("Nada registrado ainda")
           return
     c = 0
     total = 0
@@ -65,17 +73,13 @@ def resumo():
         print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
         total += lstProd[c][1]
         c = c + 1
-    print("A produção total foi de : {}".format(total))
-    input("Clique enter para voltar: ")
+    retornar("A produção total foi de : {}".format(total))
     return
 
 #Loop do menu
 
 while True:
-    limpar()
-    print("="*8)
-    print("IDC-CALC")
-    print("="*8)
+    cabe("I-D-C--CALC")
     print('''
 (1) - Registrar produção
 (2) - Registrar tempo

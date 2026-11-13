@@ -14,10 +14,22 @@ def validarNumero(mensagen):
         print("Valor invalido, digite novamente!")
         input("Clique enter para retornar: ")
     return int(esc)
-    
+
+def validarHora(mensagem):
+    while True:
+        horario = input(mensagem)
+        separada = horario.split(":")
+        hora = int(separada[0])
+        minu = int(separada[1])
+        if hora >= 0 and hora <= 23:
+            if minu >= 0 and minu <= 59:
+                return horario
+        print("Horario invalido")
+        input("Tecle enter para voltar: ")
+
 def registrarProd(lista):
     print("Registrar produção")
-    hora = input("Digite a hora: ")
+    hora = validarHora("Digite o horario (HH/MM): ")
     for h in lista:
         if h[0] == hora:
             print("Hora ja registrada!")

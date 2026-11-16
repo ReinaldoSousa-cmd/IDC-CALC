@@ -3,18 +3,10 @@ import os
 #Criando funções
 lstProd = []
 hora = 0
+
+#Funções de organização:
 def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
-
-def validarNumero(mensagen):
-    while True:
-        esc = input(mensagen)
-        if esc.isdigit():
-            if int(esc) >= 0:
-                break
-        print("Valor invalido, digite novamente!")
-        input("Clique enter para retornar: ")
-    return int(esc)
 
 def retornar(mensagem):
     print(mensagem)
@@ -25,6 +17,18 @@ def cabe(mensagem):
     print("="*len(mensagem))
     print(mensagem)
     print("="*len(mensagem))
+
+#Funções de validação:
+
+def validarNumero(mensagen):
+    while True:
+        esc = input(mensagen)
+        if esc.isdigit():
+            if int(esc) >= 0:
+                break
+        print("Valor invalido, digite novamente!")
+        input("Clique enter para retornar: ")
+    return int(esc)
 
 def validarHora(mensagem):
     while True:
@@ -39,6 +43,7 @@ def validarHora(mensagem):
                         return horario
         retornar("Horario invalido!")
 
+#Funções principais/Funções do menu
 def registrarProd(lista):
     cabe("Registrar produção")
     hora = validarHora("Digite o horario (HH:MM): ")
@@ -82,7 +87,6 @@ def resumo():
          retornar("Registre o tempo de produção para calcular a média por hora")
          return
     retornar("A média produzida por hora foi de: {:.0f}".format(total/hora))
-    return
 
 #Loop do menu
 

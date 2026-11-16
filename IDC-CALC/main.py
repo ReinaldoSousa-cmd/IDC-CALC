@@ -77,8 +77,11 @@ def resumo():
         print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
         total += lstProd[c][1]
         c = c + 1
-    print("A média de produção é de {} por hora!".format(total/hora))
-    retornar("A produção total foi de : {}".format(total))
+    print("A produção total foi de : {}".format(total))
+    if hora <= 0:
+         retornar("Registre o tempo de produção para calcular a média por hora")
+         return
+    retornar("A média produzida por hora foi de: {:.0f}".format(total/hora))
     return
 
 #Loop do menu

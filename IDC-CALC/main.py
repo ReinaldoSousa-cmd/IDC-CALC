@@ -2,6 +2,7 @@
 import os
 #Criando funções
 lstProd = []
+hora = 0
 def limpar():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -28,12 +29,14 @@ def cabe(mensagem):
 def validarHora(mensagem):
     while True:
         horario = input(mensagem)
-        separada = horario.split(":")
-        hora = int(separada[0])
-        minu = int(separada[1])
-        if hora >= 0 and hora <= 23:
-            if minu >= 0 and minu <= 59:
-                return horario
+        if len(horario) == 5 and horario[2] == ":":
+            separada = horario.split(":")
+            if separada[0].isdigit() and separada[1].isdigit():
+                hora = int(separada[0])
+                minu = int(separada[1])
+                if 0 <= hora <= 23:
+                    if 0 <= minu <= 59:
+                        return horario
         retornar("Horario invalido!")
 
 def registrarProd(lista):
@@ -49,18 +52,19 @@ def registrarProd(lista):
                 pn = validarNumero("Digite a produção da hora: ")
                 h[1] = pn
                 return
-                
             else:
                 return
-    p = validarNumero("Digite a produção da hora: ")
-            
-    prod = p
+    prod = validarNumero("Digite a produção da hora: ")
     lista.append([hora,prod])
     lista.sort()
     return lista
 
 def registrarTempo():
-    retornar("Opção em desenvolvimento")
+    minutos = validarNumero("Digite o tempo trabalhado em minutos: ")
+    hora = minutos/60
+    print("Tempo registrado, foram {} horas trabalhadas".format(hora))
+    retornar("Veja o resumo para ver a média de produção!")
+    return hora
 
 def resumo():
     cabe("Resumo")
@@ -73,6 +77,7 @@ def resumo():
         print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
         total += lstProd[c][1]
         c = c + 1
+    print("A média de produção é de {} por hora!".format(total/hora))
     retornar("A produção total foi de : {}".format(total))
     return
 
@@ -89,7 +94,7 @@ while True:
     if esc == 1:
             registrarProd(lstProd)
     elif esc == 2:
-            registrarTempo()
+            hora = registrarTempo()
     elif esc == 3:
             resumo()
     elif esc == 4:

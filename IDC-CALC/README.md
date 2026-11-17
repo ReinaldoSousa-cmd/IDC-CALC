@@ -46,5 +46,5 @@ Caso prefira entrar diretamente na subpasta que contém o arquivo `main.py`, exe
 
 ```bash
 cd IDC-CALC
-python IDC-CALC/main.py
+python main.py
 ```

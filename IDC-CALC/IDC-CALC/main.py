@@ -79,8 +79,8 @@ def resumo():
     c = 0
     total = 0
     for i in lstProd:
-        print("A produção de {} foi {}".format(lstProd[c][0],lstProd[c][1]))
-        total += lstProd[c][1]
+        print("A produção de {} foi {}".format(i[0],i[1]))
+        total += i[1]
         c = c + 1
     print("A produção total foi de : {}".format(total))
     if hora <= 0:

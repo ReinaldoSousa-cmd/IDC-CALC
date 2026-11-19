@@ -81,12 +81,10 @@ def resumo():
     if not lstProd:
           retornar("Nada registrado ainda")
           return
-    c = 0
     total = 0
     for i in lstProd:
         print("A produção de {} foi {}".format(i[0],i[1]))
         total += i[1]
-        c = c + 1
     print("A produção total foi de : {}".format(total))
     if hora <= 0:
          retornar("Registre o tempo de produção para calcular a média por hora")

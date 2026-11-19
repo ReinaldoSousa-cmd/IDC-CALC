@@ -65,11 +65,16 @@ def registrarProd(lista):
     return lista
 
 def registrarTempo():
-    minutos = validarNumero("Digite o tempo trabalhado em minutos: ")
-    hora = minutos/60
-    print("Tempo registrado, foram {} horas trabalhadas".format(hora))
-    retornar("Veja o resumo para ver a média de produção!")
-    return hora
+    while True:
+        
+        minutos = validarNumero("Digite o tempo trabalhado em minutos: ")
+        if minutos >= 1:
+             
+            hora = minutos/60
+            print("Tempo registrado, foram {} horas trabalhadas".format(hora))
+            retornar("Veja o resumo para ver a média de produção!")
+            return hora
+        print("Tempo invalido, digite um valor acima de 0")
 
 def resumo():
     cabe("Resumo")
